@@ -6,6 +6,9 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserFactory;
+
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -20,13 +23,14 @@ public class MainActivity extends AppCompatActivity {
         MyHTTPRequest req = new MyHTTPRequest();
         req.execute("http://torunski.ca/CST2335.xml");  //Type 1
     }
-                                                //Type1     Type2   Type3
+
+
+                                                 //Type1     Type2   Type3
     private class MyHTTPRequest extends AsyncTask< String, Integer, String>
     {
-              //Type3                Type1
+               //Type3                Type1
         public String doInBackground(String ... args)
         {
-
             try {
 
                 //create a URL object of what server to contact:
@@ -43,7 +47,8 @@ public class MainActivity extends AppCompatActivity {
             {
 
             }
-                return "Done";
+
+            return "Done";
         }
 
                                     //Type 2
