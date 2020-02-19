@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
                 XmlPullParser xpp = factory.newPullParser();
                 xpp.setInput( response  , "UTF-8");
 
-
+                String parameter = null;
 
                 int eventType = xpp.getEventType(); //The parser is currently at BEGIN_DOCUMENT
 
@@ -63,6 +63,21 @@ public class MainActivity extends AppCompatActivity {
                         {
                             //If you get here, then you are pointing to a <Weather> start tag
                             String outlook = xpp.getAttributeValue(null,    "outlook");
+                        }
+
+                        else if(xpp.getName().equals("AMessage"))
+                        {
+                            parameter = xpp.getAttributeValue(null, "message"); // this will run for <AMessage message="parameter" >
+                        }
+                        else if(xpp.getName().equals("Weather"))
+                        {
+                            parameter = xpp.getAttributeValue(null, "outlook"); //this will run for <Weather outlook="parameter"
+                            parameter = xpp.getAttributeValue(null, "windy"); //this will run for <Weather windy="paramter"  >
+                        }
+                        else if(xpp.getName().equals("Temperature"))
+                        {
+                            xpp.next(); //move the pointer from the opening tag to the TEXT event
+                            parameter = xpp.getText(); // this will return  20
                         }
                     }
                     eventType = xpp.next(); //move to the next xml event and store it in a variable
