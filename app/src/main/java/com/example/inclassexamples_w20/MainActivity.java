@@ -57,8 +57,12 @@ public class MainActivity extends AppCompatActivity {
                 }
                 String result = sb.toString(); //result is the whole string
 
-                JSONObject uvReport = new JSONObject(result); // convert string to JSON
-                double uvRating = uvReport.getDouble("value"); //get the double associated with "value"
+
+                // convert string to JSON:
+                JSONObject uvReport = new JSONObject(result);
+
+                //get the double associated with "value"
+                double uvRating = uvReport.getDouble("value");
 
                 Log.i("MainActivity", "The uv is now: " + uvRating) ;
 
