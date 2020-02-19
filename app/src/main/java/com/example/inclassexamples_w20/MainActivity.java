@@ -6,6 +6,13 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserFactory;
+
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -22,6 +29,33 @@ public class MainActivity extends AppCompatActivity {
               //Type3                Type1
         public String doInBackground(String ... args)
         {
+            try {
+
+                //create a URL object of what server to contact:
+                URL url = new URL(args[0]);
+
+                //open the connection
+                HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+
+                //wait for data:
+                InputStream response = urlConnection.getInputStream();
+
+
+
+                //From part 3: slide 19
+                XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
+                factory.setNamespaceAware(false);
+                XmlPullParser xpp = factory.newPullParser();
+                xpp.setInput( response  , "UTF-8");
+
+
+
+            }
+            catch (Exception e)
+            {
+
+            }
+
             return "Done";
         }
 
