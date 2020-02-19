@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.Xml;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
@@ -48,6 +49,24 @@ public class MainActivity extends AppCompatActivity {
                 XmlPullParser xpp = factory.newPullParser();
                 xpp.setInput( response  , "UTF-8");
 
+
+
+                int eventType = xpp.getEventType(); //The parser is currently at BEGIN_DOCUMENT
+
+                while(eventType != XmlPullParser.END_DOCUMENT)
+                {
+
+                    if(eventType == XmlPullParser.START_TAG)
+                    {
+                        //If you get here, then you are pointing at a start tag
+                        if(xpp.getName().equals("Weather"))
+                        {
+                            //If you get here, then you are pointing to a <Weather> start tag
+                            String outlook = xpp.getAttributeValue(null,    "outlook");
+                        }
+                    }
+                    eventType = xpp.next(); //move to the next xml event and store it in a variable
+                }
 
 
             }
