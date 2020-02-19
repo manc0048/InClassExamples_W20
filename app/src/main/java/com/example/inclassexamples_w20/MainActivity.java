@@ -44,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
                 //wait for data:
                 InputStream response = urlConnection.getInputStream();
 
+
+            //JSON reading:
                 //Build the entire string response:
                 BufferedReader reader = new BufferedReader(new InputStreamReader(response, "UTF-8"), 8);
                 StringBuilder sb = new StringBuilder();
