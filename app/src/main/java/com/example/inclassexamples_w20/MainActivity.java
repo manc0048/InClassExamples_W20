@@ -6,6 +6,10 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -22,7 +26,24 @@ public class MainActivity extends AppCompatActivity {
               //Type3                Type1
         public String doInBackground(String ... args)
         {
-            return "Done";
+
+            try {
+
+                //create a URL object of what server to contact:
+                URL url = new URL(args[0]);
+
+                //open the connection
+                HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+
+                //wait for data:
+                InputStream response = urlConnection.getInputStream();
+
+            }
+            catch (Exception e)
+            {
+
+            }
+                return "Done";
         }
 
                                     //Type 2
