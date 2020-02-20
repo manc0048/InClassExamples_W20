@@ -16,22 +16,22 @@
         android:layout_height="wrap_content"
         android:text="Button 1"
         android:nextFocusDown="@id/button1"
-        android:nextFocusUp="@id/button3"/>
+        android:nextFocusUp="@id/edittext"/>
 
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button 2"
+        android:text="View Video"
 
-        android:nextFocusDown="@id/button3"
+        android:nextFocusDown="@id/edittext"
         android:nextFocusUp="@id/button1"/>
 
-    <Button
-        android:id="@+id/button3"
+    <EditText
+        android:id="@+id/edittext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button 3"
+        android:text="EditText 3"
 
         android:nextFocusDown="@id/button1"
         android:nextFocusUp="@id/button2"/>
